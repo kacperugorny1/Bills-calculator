@@ -1,0 +1,13 @@
+﻿<Application x:Class="Shopping.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Shopping"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <SolidColorBrush x:Key="BackgroundColor">#211E2B</SolidColorBrush>
+        <SolidColorBrush x:Key="GirdBackgroundColor">#312C40</SolidColorBrush>
+        <SolidColorBrush x:Key="GridlineColor">#4F4878</SolidColorBrush>
+        <SolidColorBrush x:Key="TextColor">#c2bfb8</SolidColorBrush>
+         
+    </Application.Resources>
+</Application>

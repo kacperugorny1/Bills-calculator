@@ -1,0 +1,50 @@
+﻿<Window x:Class="Shopping.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Shopping"
+        mc:Ignorable="d"
+        Title="Liczenie Zakupow" Height="450" Width="800"
+        Background="{StaticResource BackgroundColor}"
+        Foreground="{StaticResource TextColor}"
+        KeyDown="IsKeyDown"
+        Closed="ClosedWindow">
+    <Grid x:Name="Grid">
+        <Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Height="163" Margin="16,230,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="124"><Run Language="pl-pl" x:Name="KacperText" Text="Kacper"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="163" Margin="194,230,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="124"><Run Language="pl-pl" x:Name="SebaText" Text="Seba"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="163" Margin="348,230,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="124"><Run Language="pl-pl" x:Name="ZuziaText" Text="Zuzia"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="163" Margin="516,230,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="124"><Run Language="pl-pl" x:Name="DawidText" Text="Dawid"/></TextBlock>
+
+
+
+        <TextBlock  Height="30"  FontSize="22" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="158" Margin="10,10,0,0"><Run Language="pl-pl" Text="Kto robił zakupy"/></TextBlock>
+        <StackPanel Margin="10,49,702,271">
+            <RadioButton x:Name="KacperRadio" GroupName="Who" Foreground="{StaticResource TextColor}">Kacper</RadioButton>
+            <RadioButton x:Name="SebaRadio" GroupName="Who" Foreground="{StaticResource TextColor}">Seba</RadioButton>
+            <RadioButton x:Name="ZuziaRadio" GroupName="Who" Foreground="{StaticResource TextColor}">Zuzia</RadioButton>
+            <RadioButton x:Name="DawidRadio" GroupName="Who" Foreground="{StaticResource TextColor}">Dawid</RadioButton>
+        </StackPanel>
+
+
+        <TextBlock  Height="30"  FontSize="22" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="158" Margin="223,10,0,0"><Run Text="Kto p"/><Run Language="pl-pl" Text="ł"/><Run Text="aci"/></TextBlock>
+        <CheckBox x:Name = "KacperCheckBox" Foreground="{StaticResource TextColor}" Content="Kacper" HorizontalAlignment="Left" Height="14" Margin="223,49,0,0" VerticalAlignment="Top" Width="80" />
+        <CheckBox x:Name = "SebaCheckBox" Foreground="{StaticResource TextColor}" Content="Seba" HorizontalAlignment="Left" Height="14" Margin="223,68,0,0" VerticalAlignment="Top" Width="80" />
+        <CheckBox x:Name = "ZuziaCheckBox" Foreground="{StaticResource TextColor}" Content="Zuzia" HorizontalAlignment="Left" Height="14" Margin="223,87,0,0" VerticalAlignment="Top" Width="80" />
+        <CheckBox x:Name = "DawidCheckBox" Foreground="{StaticResource TextColor}" Content="Dawid" HorizontalAlignment="Left" Height="14" Margin="223,106,0,0" VerticalAlignment="Top" Width="80" />
+
+
+        <TextBlock  Height="30"  FontSize="22" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="158" Margin="410,10,0,0"><Run Language="pl-pl" Text="Kwota"/></TextBlock>
+        <TextBox x:Name="Cost" HorizontalAlignment="Left" Height="26" Margin="410,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="79"/>
+        <Button Content="Dodaj" HorizontalAlignment="Left" Height="26" Margin="410,94,0,0" VerticalAlignment="Top" Width="79" Click="Add_button_click"/>
+        <Button Content="Optymalizuj" HorizontalAlignment="Left" Height="26" Margin="538,95,0,0" VerticalAlignment="Top" Width="79" Click="Count_prices"/>
+        <Button Content="Cofnij" HorizontalAlignment="Left" Height="26" Margin="538,49,0,0" VerticalAlignment="Top" Width="80" Click="Undo"/>
+        <Button Content="Optymalizujv2" HorizontalAlignment="Left" Height="26" Margin="538,143,0,0" VerticalAlignment="Top" Width="80" Click="Optimalize"/>
+
+        <TextBlock x:Name="HistoryText" HorizontalAlignment="Left" Height="345" Margin="669,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="103"/>
+        
+
+    </Grid>
+</Window>
