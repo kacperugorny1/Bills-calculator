@@ -59,10 +59,22 @@ namespace Shopping
 
         private void Update_price() // aktualizuje kwoty 
         {
-            KacperText.Text = $"Kacper płaci dla\nSeba: {Math.Round(Costs[0, 1],2)}\nZuzia: {Math.Round(Costs[0, 2], 2)}\nDawid: {Math.Round(Costs[0, 3], 2)}\n";
-            SebaText.Text = $"Seba płaci dla\nKacper: {Math.Round(Costs[1, 0], 2)}\nZuzia: {Math.Round(Costs[1, 2], 2)}\nDawid: {Math.Round(Costs[1, 3],2)}\n";
-            ZuziaText.Text = $"Zuzia płaci dla\nKacper: {Math.Round(Costs[2, 0], 2)}\nSeba: {Math.Round(Costs[2, 1], 2) }\nDawid: {Math.Round(Costs[2, 3], 2)}\n";
-            DawidText.Text = $"Dawid płaci dla\nKacper: {Math.Round(Costs[3, 0], 2)}\nSeba: {Math.Round(Costs[3, 1], 2)}\nZuzia: {Math.Round(Costs[3, 2], 2)}\n";
+
+            (double, double, double, double) bilans = Count_differences();
+
+            KacperText.Text = $"Kacper płaci dla\nSeba: {Math.Round(Costs[0, 1],2)}\nZuzia: {Math.Round(Costs[0, 2], 2)}\nDawid: {Math.Round(Costs[0, 3], 2)}\nBilans: {Math.Round(bilans.Item1, 2)}";
+            SebaText.Text = $"Seba płaci dla\nKacper: {Math.Round(Costs[1, 0], 2)}\nZuzia: {Math.Round(Costs[1, 2], 2)}\nDawid: {Math.Round(Costs[1, 3],2)}\nBilans: {Math.Round(bilans.Item2, 2)}";
+            ZuziaText.Text = $"Zuzia płaci dla\nKacper: {Math.Round(Costs[2, 0], 2)}\nSeba: {Math.Round(Costs[2, 1], 2) }\nDawid: {Math.Round(Costs[2, 3], 2)}\nBilans: {Math.Round(bilans.Item3, 2)}";
+            DawidText.Text = $"Dawid płaci dla\nKacper: {Math.Round(Costs[3, 0], 2)}\nSeba: {Math.Round(Costs[3, 1], 2)}\nZuzia: {Math.Round(Costs[3, 2], 2)}\nBilans: {Math.Round(bilans.Item4, 2)}";
+        }
+
+        (double, double, double, double) Count_differences()
+        {
+            double kacper_diff = -Costs[0, 1] - Costs[0, 2] - Costs[0, 3] + Costs[1, 0] + Costs[2, 0] + Costs[3, 0];
+            double seba_diff = -Costs[1, 0] - Costs[1, 2] - Costs[1, 3] + Costs[0, 1] + Costs[2, 1] + Costs[3, 1];
+            double zuzia_diff = -Costs[2, 0] - Costs[2, 1] - Costs[2, 3] + Costs[0, 2] + Costs[1, 2] + Costs[3, 2];
+            double dawid_diff = -Costs[3, 0] - Costs[3, 1] - Costs[3, 2] + Costs[0, 3] + Costs[1, 3] + Costs[2, 3];
+            return (kacper_diff, seba_diff, zuzia_diff, dawid_diff);
         }
 
         private int Who_paid() // sprawdza kto placil
@@ -222,6 +234,12 @@ namespace Shopping
                             {
                                 Costs[i, k] += Costs[j, k];
                                 Costs[i, j] -= Costs[j, k];
+                                if (Costs[i,j] < 0)
+                                {
+                                    Costs[j, i] = -Costs[i, j];
+                                    Costs[i, j] = 0;
+                                }    
+
                                 Costs[j, k] = 0;
                             }
                             else
@@ -237,10 +255,6 @@ namespace Shopping
 
             Update_price();
         }
-
-
-
-
     }
 }
     
